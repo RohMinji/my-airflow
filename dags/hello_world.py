@@ -11,6 +11,6 @@ with DAG(dag_id="hello_world",
          catchup=False) as dag:
         task1=PythonOperator(
             task_id="hello_world",
-            python_callable=helloWorld)
+            python_callable=hello_world)
         
 task1
