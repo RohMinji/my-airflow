@@ -9,15 +9,15 @@ from airflow.providers.cncf.kubernetes.operators.kubernetes_pod import (
     KubernetesPodOperator,
 )
 
-dag_id = 'kubernetes-dag'
+dag_id = 'pod_test2'
 
 task_default_args = {
-    'owner': 'bomwo',
+    'owner': 'RohMinji',
     'retries': 3,
     'retry_delay': timedelta(minutes=5),
-    'start_date': datetime(2020, 11, 21),
+    'start_date': datetime(2021, 12, 21),
     'depends_on_past': False,
-    'email': ['bomwo25@mgmail.com'],
+    'email': ['balminji0106@mgmail.com'],
     'email_on_retry': False,
     'email_on_failure': True,
     'execution_timeout': timedelta(hours=1)
