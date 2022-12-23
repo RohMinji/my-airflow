@@ -75,5 +75,5 @@ with models.DAG(
     t3.set_upstream(t1)
 
     t2.set_downstream(end)
-    t3.set_downstream(end)
+    t4.set_downstream(end)
     
