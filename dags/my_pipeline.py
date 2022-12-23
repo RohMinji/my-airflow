@@ -40,8 +40,7 @@ with models.DAG(
         retries=3,
         dag=dag)
 
-    templated_command="""
-         # #을 삭제해주세요
+    templated_command="""  
         {% for i in range(5) %}
             echo "{{ ds }}"
             echo "{{ macros.ds_add(ds, 7)}}"
@@ -55,8 +54,21 @@ with models.DAG(
         params={'my_param': 'Parameter I passed in'},
         dag=dag)
 
+    t4 = KubernetesPodOperator(
+	 namespace='default',
+	 image="python:3.6",
+	 cmds=["python","-c"],
+	 arguments=["print('hello world')"],
+	 labels={"foo": "bar"},
+	 name="passing-test",
+	 task_id="passing-task",
+	 get_logs=True,
+	 dag=dag)
+
     # set_upstream은 t1 작업이 끝나야 t2가 진행된다는 뜻
     t2.set_upstream(t1)
+    t4.set_upstream(t2)
     # t1.set_downstream(t2)와 동일한 표현입니다
     # t1 >> t2 와 동일 표현
     t3.set_upstream(t1)
+    
