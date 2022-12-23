@@ -11,7 +11,7 @@ from datetime import datetime, timedelta
 default_args = {
     'owner': 'airflow',
     'depends_on_past': False,
-    'start_date': datetime(2022, 12, 11),#지금부터 :datetime.utcnow()
+    'start_date': datetime.utcnow(),
     'email': ['airflow@airflow.com'],
     'email_on_failure': False,
     'email_on_retry': False,
@@ -20,8 +20,8 @@ default_args = {
 
 # dag 객체 생성
 with models.DAG(
-        dag_id='mj_dag1', description='First DAG', 
-      schedule_interval = '55 14 * * *', 
+      dag_id='mj_dag1', description='First DAG', 
+      schedule_interval = timedelta(days=1),
       default_args=default_args) as dag:
 
 
@@ -55,19 +55,19 @@ with models.DAG(
         dag=dag)
 
     t4 = KubernetesPodOperator(
+	 task_id="passing-task",
 	 namespace='mj-proj',
 	 image="python:3.6",
 	 cmds=["python","-c"],
 	 arguments=["print('hello world')"],
 	 labels={"foo": "bar"},
 	 name="passing-test",
-	 task_id="passing-task",
 	 get_logs=True,
 	 dag=dag)
 
     # set_upstream은 t1 작업이 끝나야 t2가 진행된다는 뜻
     t2.set_upstream(t1)
-    t4.set_upstream(t2)
+    t4.set_upstream(t3)
     # t1.set_downstream(t2)와 동일한 표현입니다
     # t1 >> t2 와 동일 표현
     t3.set_upstream(t1)
