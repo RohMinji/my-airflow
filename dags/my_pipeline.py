@@ -65,10 +65,15 @@ with models.DAG(
 	 get_logs=True,
 	 dag=dag)
 
+    end = DummyOperator(task_id='end', dag=dag)
+
     # set_upstream은 t1 작업이 끝나야 t2가 진행된다는 뜻
     t2.set_upstream(t1)
     t4.set_upstream(t3)
     # t1.set_downstream(t2)와 동일한 표현입니다
     # t1 >> t2 와 동일 표현
     t3.set_upstream(t1)
+
+    t2.set_downstream(end)
+    t3.set_downstream(end)
     
