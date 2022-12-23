@@ -21,7 +21,7 @@ default_args = {
 # dag 객체 생성
 with models.DAG(
       dag_id='mj_dag1', description='First DAG', 
-      schedule_interval = timedelta(days=1),
+      schedule_interval = timedelta(hours=1),
       default_args=default_args) as dag:
 
 
