@@ -55,7 +55,7 @@ with models.DAG(
         dag=dag)
 
     t4 = KubernetesPodOperator(
-	 namespace='default',
+	 namespace='mj-proj',
 	 image="python:3.6",
 	 cmds=["python","-c"],
 	 arguments=["print('hello world')"],
