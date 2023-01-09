@@ -14,13 +14,11 @@ default_args = {
 }
 with DAG('docker_dag', default_args=default_args, schedule_interval="5 * * * *", catchup=False) as dag:
   t1 = BashOperator(
-    namespace='mj-proj',
     task_id='print_current_date',
     bash_command='date'
   )
 
   t2 = DockerOperator(
-    namespace='mj-proj',
     task_id='docker_command',
     image='ghcr.io/rohminji/icis_samp:master',
     api_version='auto',
@@ -30,7 +28,6 @@ with DAG('docker_dag', default_args=default_args, schedule_interval="5 * * * *",
     network_mode="bridge"
   )
   t3 = BashOperator(
-    namespace='mj-proj',
     task_id='print_hello',
     bash_command='echo "hello world"'
   )
