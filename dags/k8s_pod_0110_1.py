@@ -64,7 +64,7 @@ start = DummyOperator(task_id="start", dag=dag)
 
 run = KubernetesPodOperator(
     task_id="kubernetespodoperator",
-    namespace=‘mj-proj’,
+    namespace="mj-proj",
     image='nginx',
     #cmds=["sleep", "360d"],
     #secrets=[
