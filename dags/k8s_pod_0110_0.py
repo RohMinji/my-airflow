@@ -63,7 +63,7 @@ with models.DAG(
 
     t3 = BashOperator(
         task_id='templated',
-        bash_command=templated_command,
+        bash_command='sleep 5',
         params={'my_param': 'Parameter I passed in'},
         dag=dag)
 
