@@ -19,7 +19,7 @@ default_args = {
 
 # dag 객체 생성
 with models.DAG(
-        dag_id='bash_test', description='First DAG', 
+        dag_id='k8s_pod_test1', description='First DAG', 
       schedule_interval = '55 14 * * *', 
       default_args=default_args) as dag:
 
