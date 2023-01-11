@@ -65,13 +65,13 @@ start = DummyOperator(task_id="start", dag=dag)
 run = KubernetesPodOperator(
     task_id="kubernetespodoperator",
     namespace='mj-proj',
-    image='nginx',
+    image='ghcr.io/rohminji/batch:master',
     #cmds=["sleep", "360d"],
     #secrets=[
     #    env
     #],
     #image_pull_secrets=[k8s.V1LocalObjectReference('image_credential')],
-    name='ghcr.io/rohminji/batch:master',
+    name='batch',
     is_delete_operator_pod=True,
     get_logs=True,
     #resources=pod_resources,
