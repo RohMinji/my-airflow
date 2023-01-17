@@ -9,7 +9,7 @@ from airflow.providers.cncf.kubernetes.operators.kubernetes_pod import (
     KubernetesPodOperator,
 )
 
-dag_id = 'k8s_pod_test3'
+dag_id = 'k8s_pod_test4'
 
 task_default_args = {
     'owner': 'airflow',
