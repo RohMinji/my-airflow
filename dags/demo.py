@@ -29,7 +29,7 @@ dag = DAG(
     description='kubernetes pod operator',
     default_args=task_default_args,
     #schedule_interval='5 16 * * *',
-    schedule_interval= timedelta(hours=1),
+    schedule_interval= @hourly,
     max_active_runs=1
 )
 
