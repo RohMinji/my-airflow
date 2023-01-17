@@ -33,9 +33,7 @@ dag = DAG(
     max_active_runs=1
 )
 
-#args = {
-#    'owner': 'airflow'
-#}
+
 
 #with DAG(
 #    dag_id='kubernetes-simple-dag',
