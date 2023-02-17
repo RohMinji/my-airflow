@@ -19,7 +19,7 @@ dag = DAG(
 
 download_launches = BashOperator(
     task_id='download_launches',
-    bash_command="curl -L 'https://ll.thespacedevs.com/2.0.0/launch/upcoming' -output /tmp/launches.json", dag=dag,
+    bash_command=f"curl -L 'https://ll.thespacedevs.com/2.0.0/launch/upcoming' -output /tmp/launches.json", dag=dag,
 )
 
 #json 결괏값을 파싱하고 모든 로켓 사진을 다운로드하는 함수
