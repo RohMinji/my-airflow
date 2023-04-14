@@ -19,7 +19,8 @@ dag = DAG(
 
 download_launches = BashOperator(
     task_id='download_launches',
-    bash_command=f"curl -o /tmp/launches.json -L 'https://ll.thespacedevs.com/2.0.0/launch/upcoming'", dag=dag,
+    bash_command=f"curl -o /tmp/launches.json -L 'https://ll.thespacedevs.com/2.0.0/launch/upcoming' ", 
+    dag=dag,
 )
 
 #json 결괏값을 파싱하고 모든 로켓 사진을 다운로드하는 함수
@@ -42,7 +43,8 @@ def _get_pictures():
             except requests_exceptions.MissingSchema:
                 print(f"{image_url} appears to be an invalid URL.")
             except requests_exceptions.ConnectionError:
-                print(f"Could not download image {image_url}")  
+                print(f"Could not download image {image_url}") 
+                
 get_pictures=PythonOperator(
     task_id='get_pictures',
     python_callable=_get_pictures,
