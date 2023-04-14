@@ -7,8 +7,8 @@ import requests
 import requests.exceptions as requests_exceptions
 
 from airflow import DAG
-from airflow.operators.python_operator import PythonOperator
-from airflow.operators.bash_operator import BashOperator
+from airflow.operators.python import PythonOperator
+from airflow.operators.bash import BashOperator
 
 # DAG 객체 인스턴스 생성
 dag = DAG(
