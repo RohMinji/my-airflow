@@ -1,5 +1,4 @@
 from datetime import datetime, timedelta
-
 from kubernetes.client import models as k8s
 from airflow.models import DAG, Variable
 from airflow.operators.dummy_operator import DummyOperator
@@ -15,7 +14,7 @@ task_default_args = {
     'owner': 'airflow',
     #'retries': 3,
     #'retry_delay': timedelta(minutes=5),
-    'start_date': airflow.utils.dates.days_ago(1), #datetime(2023, 1, 17),
+    'start_date': days_ago(1), #datetime(2023, 1, 17),
     'depends_on_past': False,
   #  'email': ['shclub@gmail.com'],
   #  'email_on_retry': False,
