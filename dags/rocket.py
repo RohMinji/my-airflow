@@ -20,7 +20,7 @@ dag = DAG(
 download_launches = BashOperator(
     task_id='download_launches',
     #bash_command="/usr/bin/curl -o /tmp/launches.json -L 'https://ll.thespacedevs.com/2.0.0/launch/upcoming' ", 
-    bash_command='echo "Hello! Today is Monday"',
+    bash_command='env',
     dag=dag,
 )
 
